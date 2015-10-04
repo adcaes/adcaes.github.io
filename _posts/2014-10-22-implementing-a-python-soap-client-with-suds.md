@@ -2,18 +2,23 @@
 layout: post
 title:  "Implementing a Python SOAP client with Suds"
 date:   2014-10-22
-categories: programming python
+tags: [Programming, Python]
+image:
+  feature: abstract-3.jpg
+  credit: dargadgetz
+  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
+  show_in_list: false
 ---
 
 This is a small introduction on how to implement a SOAP client with Python. Most likely you are not thrilled about having to build a SOAP client, specially if you are used to the simplicity of Python and REST, but it is not as bad if you use the right library.
 
 After investigating a few options I decided for Suds, seeming quite active and simple to use. The original Suds library which is no longer maintained, but there is an actively maintained fork of suds, suds-jurko, and is the one I use. I will explain how to build a SOAP client with Suds with a simple example.
 
-### The service
+## The service
 
 Our client will interact with an example SOAP service that provides the current weather of a given city. As you may know, SOAP services are described by a WSDL file that contains a XML specification of the operations supported by the service. Our example service supports one operation, getCityWeather, that requires a country and a city. It returns the temperature, weather and update time of the requested city. Here you can see the WSDL file.
 
-### The client
+## The client
 
 To implement the client first of all instantiate the SUDS Client class, providing the location of the WSDL file. The WDSL can be served at a URL or as a local file, both options directly supported.
 
