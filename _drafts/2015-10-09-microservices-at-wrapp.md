@@ -51,19 +51,24 @@ Finally we are using **dynamic multi-tenancy**: Services are dynamically assigne
 
 ### Service discovery
 
-After a few iterations we use a totally decentralized solution based on DNS, [Consul](https://www.consul.io/) and [HAProxy](http://www.haproxy.org/) that transparently handles addition and deletion of services.
+After a few iterations we use a solution based on DNS, [Consul](https://www.consul.io/), [Registrator](http://gliderlabs.com/registrator) and [HAProxy](http://www.haproxy.org/) that transparently handles addition and deletion of services.
 
-A service has a DNS name mapped to a private IP. On each server, HAProxy is configured to listen for internal requests to private IPs mapped to services running in the cluster and load balances the requests among all the available instances of the service.
+We assign a different private IP to every service and for convenience we map service names to their private IP using DNS.
 
-Consul runs on each server and is responsible of announcing all the services running in the instance and any change on them to the Consul cluster, and to refresh the configuration of the local HAProxy to include all the services running in the cluster.
+Registrator, Consul Agent and HAProxy run in each server of the cluster:
+
+* Registrator inspects Docker containers as they come online/offline and informs the local Consul Agent of the services that they run.
+* Consul Agent periodically registers the services that are running in the machine to the Consul Catalog and refreshes the configuration of the local HAProxy to include all the services listed in the Catalog via consul-template.
+* HAProxy is configured to listen for internal requests to the private IPs assigned to the services running in the cluster and load balances the requests among all the available instances of each service.
 
 To better understand this mechanism, lets use an example; Suppose we are adding a new service into our cluster, the users service, this is what happens:
 
-* We assign a DNS name to the service, assume ```users.internal.ourdomain``` mapped to the private IP ```192.186.10.1```.
+* We assign the private IP ```192.186.10.1``` to the users service.
+* We add a DNS name ```users.internal.ourdomain``` mapping to the private IP of the users service.
 * The new service is deployed, and it starts running in a subset of our servers.
-* The Consul agent in those servers will detect that a new service is running in the machine and will emit an event announcing that a new users service is available together with the IP of the machine and the port where the users service is listening to.
-* All the members of the Consul cluster will receive the event and will update the HAProxy configuration of the machine where they run, adding a new backend to serve requests to ```192.186.10.1```, the ```users.internal.ourdomain``` IP.
-* Finally when a service in the cluster issues a request to ```users.internal.ourdomain```, the DNS name will be resolved to the private IP, and the local HAProxy will receive the request and forward it to one of the available instances of the users service.
+* Registrator running in those servers will detect a new Docker container running the users service and will inform the Consul Agent that will register it to the Consul Catalog.
+* Eventually the Consul agent running in each server will update the local HAProxy configuration adding a new backend to serve requests to the users service IP ```192.186.10.1```.
+* Finally when a service in the cluster issues a request to ```users.internal.ourdomain``` the DNS name will be resolved to the private IP and the local HAProxy will receive the request and forward it to one of the available instances of the users service.
 
 <figure>
 	<img src="/images/service-discovery.png" alt="Performing a request"></a>
