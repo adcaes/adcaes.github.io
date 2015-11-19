@@ -3,11 +3,6 @@ layout: post
 title: "Getting started with Twisted"
 date:   2015-09-14
 tags: [Programming, Python]
-image:
-  feature: abstract-3.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-  show_in_list: false
 ---
 
 ## Introduction

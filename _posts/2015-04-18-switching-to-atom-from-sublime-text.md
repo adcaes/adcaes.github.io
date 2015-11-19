@@ -3,11 +3,6 @@ layout: post
 title: "Switching to Atom from Sublime Text"
 date:   2015-04-18
 tags: [Atom]
-image:
-  feature: abstract-3.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-  show_in_list: false
 ---
 ## The Switch
 

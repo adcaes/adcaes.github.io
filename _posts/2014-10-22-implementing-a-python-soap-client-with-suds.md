@@ -3,11 +3,6 @@ layout: post
 title:  "Implementing a Python SOAP client with Suds"
 date:   2014-10-22
 tags: [Programming, Python]
-image:
-  feature: abstract-3.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-  show_in_list: false
 ---
 
 This is a small introduction on how to implement a SOAP client with Python. Most likely you are not thrilled about having to build a SOAP client, specially if you are used to the simplicity of Python and REST, but it is not as bad if you use the right library.

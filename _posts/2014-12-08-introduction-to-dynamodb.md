@@ -3,11 +3,6 @@ layout: post
 title: "Getting started with DynamoDB"
 date:   2014-12-08
 tags: [AWS]
-image:
-  feature: abstract-3.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-  show_in_list: false
 ---
 
 DynamoDB is a managed NoSQL database offered by Amazon as part of AWS. It is basically a key-value store with some nice additions, the most important, the ability to automatically maintain indexes over different attributes.

@@ -3,11 +3,6 @@ layout: post
 title: "Monitoring microservices with HAProxy and Riemann"
 date:   2015-07-12
 tags: [Docker, Microservices, Monitoring]
-image:
-  feature: abstract-3.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
-  show_in_list: false
 ---
 ## The Goal
 
