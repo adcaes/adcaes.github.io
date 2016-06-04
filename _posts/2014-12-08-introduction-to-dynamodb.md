@@ -30,7 +30,7 @@ There are two basic operations for reading data from DynamoDB, query and scan.
 
 ### Query
 
-A query operation gets items from a table using one of its indexes. A query operation must specify the index to use, the value of the hash key, and optionally the value of the range key with one of the available filtering operators (EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN).
+A query operation gets items from a table using one of its indexes. A query operation must specify the index to use, the value of the hash key, and optionally the value of the range key with one of the available filtering operators (EQ, LE, LT, GE, GT, BEGINS_WITH, BETWEEN).
 
 You read it right, **the hash key always has to be provided, and it is evaluated with an equality condition**. So if you need to perform complex queries, like getting all the rows created in the last hour, DynamoDB is not a good option.
 
