@@ -77,4 +77,4 @@ For example, if your table needs to support 10 writes/s and 100 strongly consist
 
 10 write units x $0.00065 + 100 read units x $0.00013 = $0.0195/hour or $14.04/month.
 
-*\*These prices are for US East region. To see the current prices for a specific AWS region check out this page.*
+*\*These prices are for US East region. To see the current prices for a specific AWS region check out this [page](http://aws.amazon.com/dynamodb/pricing/).*
